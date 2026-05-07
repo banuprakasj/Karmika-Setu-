@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  
+  --color-brand-primary: #5A5A40;
+  --color-brand-paper: #F5F5F0;
+  --color-brand-ink: #141414;
+  --color-brand-muted: var(--text-muted);
+}
+
+@layer base {
+  :root {
+    --bg-main: #F5F5F0;
+    --bg-card: #FFFFFF;
+    --text-main: #141414;
+    --text-muted: #404038;
+    --border-main: rgba(20, 20, 20, 0.08);
+  }
+
+  .dark {
+    --bg-main: #0F0F0D;
+    --bg-card: #1C1C18;
+    --text-main: #FFFFFF;
+    --text-muted: #BBBBAB;
+    --border-main: rgba(245, 245, 240, 0.15);
+    --bg-inverse: #EAEAEA;
+    --text-inverse: #141414;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Force overrides in dark mode */
+  .dark .bg-white { background-color: var(--bg-card) !important; }
+  .dark .bg-brand-paper { background-color: var(--bg-main) !important; }
+  .dark .text-brand-ink { color: var(--text-main) !important; }
+  .dark .text-brand-muted { color: var(--text-muted) !important; }
+  .dark .border-brand-ink\/5,
+  .dark .border-brand-ink\/10,
+  .dark .border-brand-ink\/20 { border-color: var(--border-main) !important; }
+  
+  /* Invert black elements to white in dark mode */
+  .dark .bg-brand-ink { background-color: var(--bg-inverse) !important; color: var(--text-inverse) !important; }
+  .dark .bg-brand-ink .text-white { color: var(--text-inverse) !important; }
+  .dark .border-brand-ink { border-color: var(--bg-inverse) !important; }
+
+  /* Pastel color fixes for dark mode */
+  .dark .bg-blue-50 { background-color: rgba(59, 130, 246, 0.15) !important; border-color: rgba(59, 130, 246, 0.3) !important; }
+  .dark .text-blue-500, .dark .text-blue-600, .dark .text-blue-700 { color: #93C5FD !important; }
+  
+  .dark .bg-emerald-50 { background-color: rgba(16, 185, 129, 0.15) !important; border-color: rgba(16, 185, 129, 0.3) !important; }
+  .dark .text-emerald-500, .dark .text-emerald-600, .dark .text-emerald-700 { color: #6EE7B7 !important; }
+
+  .dark .bg-green-50 { background-color: rgba(34, 197, 94, 0.15) !important; border-color: rgba(34, 197, 94, 0.3) !important; }
+  .dark .text-green-500, .dark .text-green-600, .dark .text-green-700 { color: #86EFAC !important; }
+  
+  .dark .bg-amber-50 { background-color: rgba(245, 158, 11, 0.15) !important; border-color: rgba(245, 158, 11, 0.3) !important; }
+  .dark .text-amber-500, .dark .text-amber-600, .dark .text-amber-700 { color: #FCD34D !important; }
+
+  .dark .bg-orange-50 { background-color: rgba(249, 115, 22, 0.15) !important; border-color: rgba(249, 115, 22, 0.3) !important; }
+  .dark .text-orange-500, .dark .text-orange-600, .dark .text-orange-700 { color: #FDBA74 !important; }
+
+  .dark .bg-red-50 { background-color: rgba(239, 68, 68, 0.15) !important; border-color: rgba(239, 68, 68, 0.3) !important; }
+  .dark .text-red-500, .dark .text-red-600, .dark .text-red-700 { color: #FCA5A5 !important; }
+
+  .dark .bg-rose-50 { background-color: rgba(244, 63, 94, 0.15) !important; border-color: rgba(244, 63, 94, 0.3) !important; }
+  .dark .text-rose-500, .dark .text-rose-600, .dark .text-rose-700 { color: #FDA4AF !important; }
+
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    aside, nav, header:not(.print-header), button, .no-print, .print\:hidden {
+      display: none !important;
+    }
+    main {
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      width: 100% !important;
+    }
+    .print\:block {
+      display: block !important;
+    }
+    .print\:p-0 {
+      padding: 0 !important;
+    }
+    .print\:border-none {
+      border: none !important;
+    }
+    .max-w-5xl, .max-w-7xl {
+      max-width: 100% !important;
+    }
+  }
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-main);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
